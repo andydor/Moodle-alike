@@ -1,10 +1,12 @@
-
+{% extends 'main/base.html' %}
 
 {% block title %}
-Login page
+<title>Login page</title>
 {% endblock %}
 
 {% load crispy_forms_tags %}
+
+<body>
 
 {% block content %}
     <form method="post" class="from-group">
@@ -16,3 +18,5 @@ Login page
         <p>Don't have an account? Create one <a href="/register">here</a></p>
     </form>
 {% endblock %}
+
+</body>
