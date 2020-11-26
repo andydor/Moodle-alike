@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from register import views as v
 from main import views as v1
+from forum import views as v2
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,5 @@ urlpatterns = [
     path('changeEmail/', v1.email_change, name='changeEmail'),
     path('', include("main.urls")),
     path('', include("django.contrib.auth.urls")),
+    path('forum/', v2.forum, name='forum'),
 ]

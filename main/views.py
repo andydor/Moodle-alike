@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect
 from . import forms as f
 
 
+@login_required()
 def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
@@ -38,8 +39,7 @@ def home(response):
     return render(response, "main/home.html", {})
 
 
+@login_required()
 def account(request):
     profile = request.user
     return render(request, "main/account.html", {"profile": profile})
-
-
