@@ -3,10 +3,11 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from .models import *
 from .forms import *
+from .models import Forum
 
 
 def forumApp(request):
-    forums = forum.objects.all()
+    forums = Forum.objects.all()
     count = forums.count()
     discussions = []
     for i in forums:
@@ -15,7 +16,7 @@ def forumApp(request):
     context = {'forums': forums,
                'count': count,
                'discussions': discussions}
-    return render(request, 'home.html', context)
+    return render(request, 'forum/forum.html', context)
 
 
 def addInForum(request):
@@ -26,7 +27,7 @@ def addInForum(request):
             form.save()
             return redirect('/')
     context = {'form': form}
-    return render(request, 'addInForum.html', context)
+    return render(request, 'forum/addInForum.html', context)
 
 
 def addInDiscussion(request):
@@ -37,4 +38,4 @@ def addInDiscussion(request):
             form.save()
             return redirect('/')
     context = {'form': form}
-    return render(request, 'addInDiscussion.html', context)
+    return render(request, 'forum/addInDisscusion.html', context)

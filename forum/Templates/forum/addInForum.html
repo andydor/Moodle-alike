@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-
+{% block content %}
 <head>
     <style>
         form{
@@ -17,3 +17,4 @@
     {{form.as_p}}
     <input type="submit" class="btn btn-success" value="submit">
 </form>
+{% endblock %}

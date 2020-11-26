@@ -27,5 +27,7 @@ urlpatterns = [
     path('changeEmail/', v1.email_change, name='changeEmail'),
     path('', include("main.urls")),
     path('', include("django.contrib.auth.urls")),
-    path('forum/', v2.forum, name='forum'),
+    path('forum/', v2.forumApp, name='forum'),
+    path('addInForum/', v2.addInForum, name='addInForum'),
+    path('addInDiscussion/', v2.addInDiscussion, name='addInDiscussion'),
 ]
