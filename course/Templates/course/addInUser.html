@@ -15,6 +15,6 @@
 <form action="{% url 'addInUser' %}" method="POST">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" class="btn btn-success" value="Enroll">
+    <input type="submit" class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px; background-color: orange" value="Enroll">
 </form>
 {% endblock %}

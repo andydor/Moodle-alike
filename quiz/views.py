@@ -3,13 +3,24 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .models import Question, Choice
+from course.models import Group, Users
 
 
 def index(request):
-    quiz = Question.objects.all()
-    count = quiz.count()
+    grup = []
+    user = Users.objects.all()
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list, 'count': count}
+
+    for x in user:
+        if request.user.username.strip() == x.username.strip():
+            grup.append(x.group)
+
+    for x in Group.objects.all():
+        if x.teacher == request.user.first_name + " " + request.user.last_name:
+            grup.append(x)
+
+    count = len(grup)
+    context = {'grup': grup, 'latest_question_list': latest_question_list, 'count': count}
     return render(request, 'quiz/index.html', context)
 
 

@@ -3,8 +3,11 @@ from django.db import models
 # Create your models here.
 from django.utils import timezone
 
+from course.models import Group
+
 
 class Question(models.Model):
+    group = models.ForeignKey(Group, blank=True, on_delete=models.CASCADE, default=1)
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
 

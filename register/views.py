@@ -20,8 +20,8 @@ def register(response):
                                 last_name=response.POST.get('last_name'), email=response.POST.get('email'))
                 profile.is_staff = True
                 profile.is_superuser = True
-                profile.save()
                 teach.save()
+            profile.save()
         return redirect("/")
     else:
         form = RegisterForm()

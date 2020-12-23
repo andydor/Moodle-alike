@@ -26,8 +26,12 @@
             Currently active groups: {{count}}
             <form method="POST" class="from-group">
                 {% csrf_token %}
-                {% if ceva == 'prof' %}
-            <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;"> <a href="/addGroup">Add new Group</a></button>
+                {% if not user.is_superuser%}
+                    <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;background-color: orange;"><a href="/addInUser">Enroll to a group</a></button>
+                {% endif %}
+                {% if user.is_superuser %}
+                    <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px; background-color: orange;"><a href="/uploadFile">Upload a group</a></button>
+                    <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px; background-color: orange;"> <a href="/addGroup">Add new Group</a></button>
                 {% endif %}
             </form>
         </h2>
@@ -45,12 +49,7 @@
                             <hr>
                             <form method="POST" class="from-group">
                                 {% csrf_token %}
-                                {% if ceva == 'student' %}
-                            <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;"><a href="/addInUser">Enroll</a></button>
-                                {% endif %}
-                                {% if ceva == 'prof' %}
-                                <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;"><a href="/uploadFile">Upload</a></button>
-                                {% endif %}
+
                             </form>
                         </div>
             <br>

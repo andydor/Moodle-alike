@@ -18,6 +18,7 @@ def studentGroup(request):
     fisiere=Fisier.objects.all()
     grupuri=[]
 
+
     ceva = 'nimic'
     studenti = Student.objects.all()
     profi = Teacher.objects.all()

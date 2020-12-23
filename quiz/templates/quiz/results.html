@@ -32,7 +32,7 @@
                     <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
                 {% endfor %}
                 </ul>
-                <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;">
+                <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px; background-color: orange">
                     <a href="{% url 'quiz' %}">Back</a>
                 </button>
 

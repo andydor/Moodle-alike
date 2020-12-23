@@ -15,6 +15,6 @@
 <form action="{% url 'sendEmail' %}" method="POST" enctype=multipart/form-data>
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" class="btn btn-success" value="Send">
+    <input type="submit" class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px; background-color: orange" value="Send">
 </form>
 {% endblock %}

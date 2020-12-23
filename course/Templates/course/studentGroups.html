@@ -44,7 +44,9 @@
                                  <h3 class="jumbotron">
                                      Title:{{f.title}}<br>
                                      <a href="{{f.fisier.url}}" download><h5>{{f.fisier.name}}</h5></a>
-                                     <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;"><a href="/sendEmail">Send email</a></button>
+                                     {% if not user.is_superuser %}
+                                        <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px; background-color: orange;"><a href="/sendEmail">Send email</a></button>
+                                     {% endif %}
                                   </h3>
 
 
