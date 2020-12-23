@@ -26,7 +26,8 @@
             Currently active forums: {{count}}
             <form method="POST" class="from-group">
                 {% csrf_token %}
-            <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;"> <a href="/addInForum">Add more</a></button>
+            <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;"> <a href="/addInForum">Create a new Forum</a></button>
+            <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;"><a href="/addInDiscussion">Reply to a Froum</a></button>
             </form>
         </h2>
             <div class="card-columns" style="padding: 10px; margin: 20px;"></div>
@@ -37,16 +38,15 @@
                 <div class="card box container">
                     <br>
                     <h5 class="card-title">
-                        <a href='{{forum.link}}'><h3>{{forum.topic}}</h3></a>
+                        <a><h3>{{forum.topic}}</h3></a>
                         </h5>
                         <div class="card-body container">
                                 <p>{{forum.description}}</p>
-
                             <hr>
-                            <p> By: {{forum.name}}</p>
+                            <p> By: {{forum.username}}</p>
                             email- {{forum.email}}
                             <hr>
-                            <h4>Views from other users</h4>
+                            <h4>Replies from other users</h4>
                             {%for discuss in discussions%}
                             {%for objs in discuss%}
                             {% if objs.forum == forum %}
@@ -57,11 +57,11 @@
                             {%endfor%}
                             <form method="POST" class="from-group">
                                 {% csrf_token %}
-                            <button class="btn btn-success" style="width:fit-content; padding: 4px; margin:10px;"><a href="/addInDiscussion">Add more</a></button>
+
                             </form>
+
                         </div>
                 </div>
-            </div>
             <br>
 
             {%endfor%}

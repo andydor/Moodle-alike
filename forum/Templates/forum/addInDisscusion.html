@@ -15,6 +15,6 @@
 <form action="{% url 'addInDiscussion' %}" method="POST">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" class="btn btn-success" value="submit">
+    <input type="submit" class="btn btn-success" value="submit"> 
 </form>
 {% endblock %}

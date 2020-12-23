@@ -13,11 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from register import views as v
 from main import views as v1
 from forum import views as v2
+from course import views as v3
+from quiz import views as v4
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +34,13 @@ urlpatterns = [
     path('forum/', v2.forumApp, name='forum'),
     path('addInForum/', v2.addInForum, name='addInForum'),
     path('addInDiscussion/', v2.addInDiscussion, name='addInDiscussion'),
-]
+    path('course/', v3.groupApp, name='course'),
+    path('addGroup/', v3.addGroup, name='addGroup'),
+    path('addInUser/', v3.addInUser, name='addInUser'),
+    path('uploadFile/', v3.uploadFile, name='uploadFile'),
+    path('materials/', v3.studentGroup, name='studentGroup'),
+    path('sendEmail/', v3.sendEmail, name='sendEmail'),
+    path('', include("quiz.urls")),
+    path('quiz/', v4.index, name='quiz'),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

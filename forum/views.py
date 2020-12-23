@@ -20,12 +20,13 @@ def forumApp(request):
 
 
 def addInForum(request):
-    form = CreateInForum()
+    form = PartialCreateInForum()
     if request.method == 'POST':
-        form = CreateInForum(request.POST)
+        addIn = Forum(username=request.user.username, email=request.user.email)
+        form = PartialCreateInForum(request.POST, instance=addIn)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/forum')
     context = {'form': form}
     return render(request, 'forum/addInForum.html', context)
 
@@ -36,6 +37,6 @@ def addInDiscussion(request):
         form = CreateInDiscussion(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/forum')
     context = {'form': form}
     return render(request, 'forum/addInDisscusion.html', context)

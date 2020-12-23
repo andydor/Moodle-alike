@@ -3,10 +3,10 @@ from django.forms import ModelForm
 from .models import Forum, Discussion
 
 
-class CreateInForum(ModelForm):
+class PartialCreateInForum(ModelForm):
     class Meta:
         model = Forum
-        fields = "__all__"
+        exclude=['username','email']
 
 
 class CreateInDiscussion(ModelForm):
