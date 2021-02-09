@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'forum.apps.ForumConfig',
     'course.apps.GroupsConfig',
     'quiz.apps.QuizConfig',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
